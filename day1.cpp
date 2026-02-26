@@ -3,6 +3,8 @@
 #include <vector>
 #include <iostream>
 #include <algorithm> // Required for std::sort()
+#include <iterator>
+
 
 int main() {
 
@@ -42,10 +44,17 @@ int main() {
 
     //std::cout << "Differences:\n";
     int totalFinal = 0;
+    int totalSimilarity = 0;
+    
     for (size_t i = 0; i < numbers1.size(); i++) {
         //std::cout << numbers1[i] - numbers2[i] << " ";
         totalFinal+= std::abs(numbers1[i] - numbers2[i]);
+        int Ni = numbers1[i];
+        int similarityNi = std::count(std::begin(numbers2), std::end(numbers2), Ni);
+        totalSimilarity += similarityNi*Ni;
+
     }
     std::cout << "total = " << totalFinal << "\n";
+    std::cout << "Part2. Total Similarity = " << totalSimilarity << "\n";
     return 0;
 }
