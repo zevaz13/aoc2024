@@ -68,7 +68,7 @@ int main() {
     std::string line;
 
     int safe = 0;
-
+    int safe2 = 0;
     while (std::getline(file, line)) {
         std::stringstream ss(line);
         std::vector<int> numbers;
@@ -78,11 +78,16 @@ int main() {
             numbers.push_back(x);
         }
 
-        if (isSafeWithDampener(numbers)) {
+        if (isSafe(numbers)) {
             safe++;
+        }
+
+        if (isSafeWithDampener(numbers)) {
+            safe2++;
         }
     }
 
-    std::cout << "Part 2 total safe = " << safe << "\n";
+    std::cout << "Part 1 total safe = " << safe << "\n";
+    std::cout << "Part 2 total safe = " << safe2 << "\n";
     return 0;
 }
